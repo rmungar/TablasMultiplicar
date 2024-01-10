@@ -1,3 +1,4 @@
+
 /**
  * Solicita un número entero en un rango.
  *
@@ -6,14 +7,14 @@
  *
  * @return Int - número entero válido dentro del rango especificado
  */
-fun  pedirNumero(): Int {
+fun  pedirNumero(min: Int, max:Int): Int {
     var numero = 0
     var valido = false
     while (!valido) {
         try {
             print("Introduzca un número entre 1 y 100: ")
             numero = readln().toInt()
-            if (numero < 0 || 100 < numero) throw Exception("Yo creo que te has colado crack")
+            if (numero < min || max < numero) throw Exception("Yo creo que te has colado crack")
             else {
                 valido = true
             }
@@ -23,12 +24,16 @@ fun  pedirNumero(): Int {
     }
     return numero
 }
-
+/**
+ * Se encarga de crear la tabla con el numero ingresado y un array de tamaño predefinido.
+ *
+ * @param numero Int - valor ingresado por el usuario
+ *
+ */
 fun tablas(vararg numero: Int) {
-    val tabla = IntArray(10) {i ->  i + 1}
-    for (i in tabla) {
-        println("$i -> $numero x $i = ${numero * i}")
-    }
+    val tabla = Array<Int>(11) {i -> i + 1} //{ i -> "$i -> $i x $num = ${num * i}"}
+
+    for (i in tabla) println("$i -> $numero x $i = ${i * numero}")
 }
 
 
@@ -39,7 +44,21 @@ fun tablas(vararg numero: Int) {
  *
  * @return Boolean - true/false dependiendo de la respuesta válida a la pregunta
  */
-fun pregunta
+fun preguntar(text: String): Boolean {
+    val continuar: Boolean
+    when (text) {
+        "s" -> continuar = true
+        "n" -> {
+            continuar = false
+        }
+        else -> {
+            print("**Error** Respuesta no válida (pulse ENTER para continuar...)")
+
+            continuar = true
+        }
+    }
+    return continuar
+}
 
 
 
@@ -47,6 +66,16 @@ fun pregunta
 
 
 fun main() {
-    tablas()
+    val min = 0
+    val max = 100
+    var continuar = true
+    while (continuar){
+        val numero = pedirNumero(min, max)
+        tablas(numero)
+        print("¿Desea generar otra tabla de multiplicación? (s/n) ")
+        val text = readln()
+        continuar = preguntar(text)
+    }
+
 }
 
