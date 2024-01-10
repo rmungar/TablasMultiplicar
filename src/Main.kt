@@ -31,9 +31,8 @@ fun  pedirNumero(min: Int, max:Int): Int {
  *
  */
 fun tablas(vararg numero: Int) {
-    val tabla = Array<Int>(11) {i -> i + 1} //{ i -> "$i -> $i x $num = ${num * i}"}
-
-    for (i in tabla) println("$i -> $numero x $i = ${i * numero}")
+    val tabla = Array(10) {i -> i + 1} //{ i -> "$i -> $i x $num = ${num * i}"}
+    for (i in tabla) println("$i -> ${numero[0]} x $i = ${i * numero[0]}")
 }
 
 
@@ -52,8 +51,7 @@ fun preguntar(text: String): Boolean {
             continuar = false
         }
         else -> {
-            print("**Error** Respuesta no válida (pulse ENTER para continuar...)")
-
+            println("**Error** Respuesta no válida (pulse ENTER para continuar...)")
             continuar = true
         }
     }
