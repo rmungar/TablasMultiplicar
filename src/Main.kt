@@ -20,6 +20,7 @@ fun  pedirNumero(min: Int, max:Int): Int {
             }
         } catch (_: Exception) {
             println("**Error** Número no válido (pulse ENTER para continuar...)")
+            readln()
         }
     }
     return numero
@@ -52,6 +53,7 @@ fun preguntar(text: String): Boolean {
         }
         else -> {
             println("**Error** Respuesta no válida (pulse ENTER para continuar...)")
+            readln()
             continuar = true
         }
     }
