@@ -18,7 +18,12 @@ fun  pedirNumero(min: Int, max:Int): Int {
             else {
                 valido = true
             }
-        } catch (_: Exception) {
+        }
+        catch (_: Exception) {
+            println("**Error** Número no válido (pulse ENTER para continuar...)")
+            readln()
+        }
+        catch (_:NumberFormatException){
             println("**Error** Número no válido (pulse ENTER para continuar...)")
             readln()
         }
