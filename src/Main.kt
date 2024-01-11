@@ -61,12 +61,8 @@ fun preguntar(text: String): Boolean {
 }
 
 
-
-
-
-
 fun main() {
-    val min = 0
+    val min = 1
     val max = 100
     var continuar = true
     while (continuar){
@@ -76,6 +72,5 @@ fun main() {
         val text = readln()
         continuar = preguntar(text)
     }
-
 }
 
